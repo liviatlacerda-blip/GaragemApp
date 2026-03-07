@@ -35,11 +35,7 @@ body{font-family:var(--font-body);background:#ECECEC;display:flex;justify-conten
 .sb.red{background:var(--red)}.sb.dark{background:#1a1a1a}.sb.light{background:var(--off-white)}
 .st{font-size:13px;font-weight:600;color:white}.st.dk{color:var(--gray-900)}
 .si{display:flex;gap:6px;align-items:center}.si span{font-size:13px;color:white}.si span.dk{color:var(--gray-900)}
-.bnav{background:white;border-top:1px solid var(--gray-200);display:flex;padding:8px 0 20px;flex-shrink:0}
-.ni{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer;padding:6px 0;transition:all 0.2s}
-.ni .ico{font-size:22px;transition:transform 0.2s}
-.ni .lbl{font-size:10px;color:var(--gray-400);font-weight:500}
-.ni.active .lbl{color:var(--red);font-weight:600}.ni.active .ico{transform:scale(1.1)}.ni:active{opacity:.7}
+
 .card{background:white;border-radius:var(--radius);padding:20px;box-shadow:var(--shadow)}
 .stitle{font-family:var(--font-display);font-size:15px;font-weight:700;color:var(--gray-900);margin-bottom:12px;letter-spacing:-0.3px}
 .bp{background:var(--red);color:white;border:none;border-radius:14px;padding:16px 24px;font-family:var(--font-display);font-size:15px;font-weight:700;width:100%;cursor:pointer;transition:all .2s;letter-spacing:-.3px}
@@ -192,12 +188,6 @@ body{font-family:var(--font-body);background:#ECECEC;display:flex;justify-conten
       <div style="background:linear-gradient(135deg,#FFE5E5,#FFCCCC);border-left:4px solid var(--danger);border-radius:var(--radius-sm);padding:12px 16px;display:flex;align-items:center;gap:10px;cursor:pointer"><span style="font-size:18px">🚨</span><div style="font-size:13px;color:#7D0000;font-weight:500;flex:1"><strong>IPVA 2024</strong> — Prazo final se aproximando</div><span style="color:var(--danger);font-size:18px">›</span></div>
     </div>
   </div>
-  <div class="bnav">
-    <div class="ni active"><span class="ico">🏠</span><span class="lbl">Garagem</span></div>
-    <div class="ni" onclick="goTo('s-fin')"><span class="ico">💳</span><span class="lbl">Financ.</span></div>
-    <div class="ni" onclick="goTo('s-seg')"><span class="ico">🛡️</span><span class="lbl">Seguros</span></div>
-    <div class="ni"><span class="ico">⚙️</span><span class="lbl">Perfil</span></div>
-  </div>
 </div>
 
 <!-- ===== FINANCIAMENTO ===== -->
@@ -234,12 +224,6 @@ body{font-family:var(--font-body);background:#ECECEC;display:flex;justify-conten
       <div style="display:flex;align-items:center;padding:16px 0;gap:14px"><div class="pnum paid">11</div><div style="flex:1"><div style="font-size:14px;font-weight:600;color:var(--gray-900)">Parcela 11/48</div><div style="font-size:12px;color:var(--gray-400);margin-top:2px">Paga em 09/01/2025 ✓</div></div><div style="font-family:var(--font-display);font-size:15px;font-weight:700;color:var(--success)">R$ 1.247</div></div>
       <button class="bs">Ver todas as parcelas</button>
     </div>
-  </div>
-  <div class="bnav">
-    <div class="ni" onclick="goTo('s-home')"><span class="ico">🏠</span><span class="lbl">Garagem</span></div>
-    <div class="ni active"><span class="ico">💳</span><span class="lbl">Financ.</span></div>
-    <div class="ni" onclick="goTo('s-seg')"><span class="ico">🛡️</span><span class="lbl">Seguros</span></div>
-    <div class="ni"><span class="ico">⚙️</span><span class="lbl">Perfil</span></div>
   </div>
 </div>
 
@@ -287,12 +271,6 @@ body{font-family:var(--font-body);background:#ECECEC;display:flex;justify-conten
       </div>
     </div>
     <div style="padding:16px 24px 32px"><button class="bs" onclick="goTo('s-seg-oferta')">🛡️ Ver planos e ofertas</button></div>
-  </div>
-  <div class="bnav">
-    <div class="ni" onclick="goTo('s-home')"><span class="ico">🏠</span><span class="lbl">Garagem</span></div>
-    <div class="ni" onclick="goTo('s-fin')"><span class="ico">💳</span><span class="lbl">Financ.</span></div>
-    <div class="ni active"><span class="ico">🛡️</span><span class="lbl">Seguros</span></div>
-    <div class="ni"><span class="ico">⚙️</span><span class="lbl">Perfil</span></div>
   </div>
 </div>
 
