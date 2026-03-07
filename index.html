@@ -236,17 +236,98 @@ body{font-family:var(--font-body);background:#ECECEC;display:flex;justify-conten
       <div><div style="font-family:var(--font-display);color:white;font-size:22px;font-weight:800;letter-spacing:-.5px">Meus Seguros</div><div style="color:rgba(255,255,255,.7);font-size:13px;margin-top:4px">Civic Prata · ABC-1D23</div></div>
     </div>
     <div style="padding:16px 24px 0">
-      <div class="scard">
-        <div class="stag">✓ &nbsp;Ativo</div>
-        <div style="font-family:var(--font-display);color:white;font-size:20px;font-weight:800;margin-top:12px">Auto Premium Plus</div>
-        <div style="color:rgba(255,255,255,.5);font-size:13px;margin-top:4px">Cobertura abrangente · Compreensivo</div>
-        <div style="display:flex;gap:20px;margin-top:20px">
-          <div><div style="color:rgba(255,255,255,.45);font-size:11px">INÍCIO</div><div style="color:white;font-size:14px;font-weight:600;margin-top:2px">15 jan 2024</div></div>
-          <div><div style="color:rgba(255,255,255,.45);font-size:11px">VENCIMENTO</div><div style="color:white;font-size:14px;font-weight:600;margin-top:2px">15 jan 2026</div></div>
-          <div><div style="color:rgba(255,255,255,.45);font-size:11px">PRÊMIO/MÊS</div><div style="color:white;font-size:14px;font-weight:600;margin-top:2px">R$ 289,00</div></div>
+      <!-- card de apólice — alterna entre ativo e vencido via JS -->
+      <div id="seg-card-ativo">
+        <div class="scard">
+          <div class="stag">✓ &nbsp;Ativo</div>
+          <div style="font-family:var(--font-display);color:white;font-size:20px;font-weight:800;margin-top:12px">Auto Premium Plus</div>
+          <div style="color:rgba(255,255,255,.5);font-size:13px;margin-top:4px">Cobertura abrangente · Compreensivo</div>
+          <div style="display:flex;gap:20px;margin-top:20px">
+            <div><div style="color:rgba(255,255,255,.45);font-size:11px">INÍCIO</div><div style="color:white;font-size:14px;font-weight:600;margin-top:2px">15 jan 2024</div></div>
+            <div><div style="color:rgba(255,255,255,.45);font-size:11px">VENCIMENTO</div><div id="seg-venc-data" style="color:white;font-size:14px;font-weight:600;margin-top:2px">15 jan 2026</div></div>
+            <div><div style="color:rgba(255,255,255,.45);font-size:11px">PRÊMIO/MÊS</div><div style="color:white;font-size:14px;font-weight:600;margin-top:2px">R$ 289,00</div></div>
+          </div>
+          <div style="color:rgba(255,255,255,.35);font-size:11px;margin-top:16px;letter-spacing:1px">APÓLICE Nº 2024-BR-0048291</div>
         </div>
-        <div style="color:rgba(255,255,255,.35);font-size:11px;margin-top:16px;letter-spacing:1px">APÓLICE Nº 2024-BR-0048291</div>
       </div>
+
+      <!-- card vencido (oculto por padrão) -->
+      <div id="seg-card-vencido" style="display:none">
+        <div style="background:linear-gradient(135deg,#2d1a00,#5a3500);border-radius:20px;padding:24px;position:relative;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.2)">
+          <div style="position:absolute;top:-30px;right:-30px;width:120px;height:120px;background:rgba(255,255,255,.04);border-radius:50%"></div>
+          <div style="background:rgba(245,166,35,.2);border:1px solid rgba(245,166,35,.4);border-radius:20px;padding:4px 10px;font-size:11px;color:#F5A623;font-weight:700;display:inline-flex;align-items:center;gap:5px;margin-bottom:12px">
+            <span style="width:6px;height:6px;border-radius:50%;background:#F5A623;display:inline-block;animation:pulse-dot 1.2s infinite"></span>Vencido
+          </div>
+          <div style="font-family:var(--font-display);color:white;font-size:20px;font-weight:800">Auto Premium Plus</div>
+          <div style="color:rgba(255,255,255,.5);font-size:13px;margin-top:4px">Cobertura abrangente · Compreensivo</div>
+          <div style="display:flex;gap:20px;margin-top:20px">
+            <div><div style="color:rgba(255,255,255,.45);font-size:11px">VENCEU EM</div><div style="color:#F5A623;font-size:14px;font-weight:600;margin-top:2px">15 jan 2025</div></div>
+            <div><div style="color:rgba(255,255,255,.45);font-size:11px">DIAS VENCIDO</div><div style="color:#F5A623;font-size:14px;font-weight:600;margin-top:2px">51 dias</div></div>
+            <div><div style="color:rgba(255,255,255,.45);font-size:11px">PRÊMIO/MÊS</div><div style="color:white;font-size:14px;font-weight:600;margin-top:2px">R$ 289,00</div></div>
+          </div>
+          <div style="color:rgba(255,200,100,.35);font-size:11px;margin-top:16px;letter-spacing:1px">APÓLICE Nº 2024-BR-0048291</div>
+        </div>
+
+        <!-- banner de urgência -->
+        <div style="background:linear-gradient(135deg,#F5A623,#E09000);border-radius:var(--radius);padding:16px;margin-top:12px;display:flex;align-items:flex-start;gap:12px;box-shadow:0 4px 20px rgba(245,166,35,.35)">
+          <span style="font-size:26px;flex-shrink:0">⚠️</span>
+          <div style="flex:1">
+            <div style="font-family:var(--font-display);color:white;font-size:15px;font-weight:800">Seu veículo está sem cobertura!</div>
+            <div style="color:rgba(255,255,255,.85);font-size:13px;margin-top:4px;line-height:1.5">Desde 15/01/2025 seu Civic Prata não está protegido. Renove agora e mantenha a mesma cobertura.</div>
+          </div>
+        </div>
+
+        <!-- oferta de renovação -->
+        <div style="margin-top:16px">
+          <div class="stitle">Renovar agora</div>
+
+          <!-- plano atual em destaque -->
+          <div style="background:white;border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;margin-bottom:10px;border:2px solid var(--red)">
+            <div style="background:linear-gradient(135deg,#990000,#CC0000);padding:14px 16px;display:flex;align-items:center;justify-content:space-between">
+              <div style="display:flex;align-items:center;gap:10px">
+                <div style="width:40px;height:40px;background:rgba(255,255,255,.15);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px">⭐</div>
+                <div><div style="font-family:var(--font-display);color:white;font-size:15px;font-weight:800">Auto Premium Plus</div><div style="color:rgba(255,255,255,.6);font-size:11px">Seu plano anterior · Renovação simplificada</div></div>
+              </div>
+              <div style="background:rgba(255,255,255,.2);border-radius:8px;padding:3px 8px;font-size:10px;color:white;font-weight:700;white-space:nowrap">Mesmo plano</div>
+            </div>
+            <div style="padding:14px 16px">
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
+                <div>
+                  <div style="font-family:var(--font-display);font-size:24px;font-weight:800;color:var(--gray-900)">R$ 289<span style="font-size:13px;color:var(--gray-400)">/mês</span></div>
+                  <div style="font-size:11px;color:var(--success);margin-top:2px">✓ Colisão · Furto · Incêndio · Terceiros</div>
+                </div>
+                <button class="bp" style="width:auto;padding:12px 18px;font-size:14px" onclick="renovarSeguro()">Renovar</button>
+              </div>
+              <div style="background:linear-gradient(135deg,#E8F8ED,#C8F0D8);border-radius:10px;padding:10px 12px;display:flex;gap:8px;align-items:center">
+                <span>🎁</span>
+                <div style="font-size:12px;color:#1B5E20;font-weight:600">Renovação em 1 clique · Dados já preenchidos</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- opção upgrade -->
+          <div style="background:white;border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;margin-bottom:8px">
+            <div style="background:linear-gradient(135deg,#1a1a2e,#0f3460);padding:14px 16px;display:flex;align-items:center;gap:10px">
+              <div style="width:40px;height:40px;background:rgba(255,255,255,.1);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px">🛡️</div>
+              <div><div style="font-family:var(--font-display);color:white;font-size:15px;font-weight:800">Auto Essencial</div><div style="color:rgba(255,255,255,.6);font-size:11px">Cobertura básica · Econômico</div></div>
+            </div>
+            <div style="padding:14px 16px;display:flex;align-items:center;justify-content:space-between">
+              <div><div style="font-family:var(--font-display);font-size:22px;font-weight:800;color:var(--gray-900)">R$ 149<span style="font-size:13px;color:var(--gray-400)">/mês</span></div><div style="font-size:11px;color:var(--gray-400);margin-top:2px">✓ Furto · Incêndio · Terceiros</div></div>
+              <button class="bp" style="width:auto;padding:10px 14px;font-size:13px;background:var(--gray-600)" onclick="showToast('✅ Solicitação enviada!')">Contratar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- botão de simulação — discreto, para demonstração -->
+    <div style="padding:12px 24px 0">
+      <button onclick="simularVencimento()" id="btn-simular-seg" style="background:transparent;border:1.5px dashed var(--gray-300);border-radius:10px;padding:10px 16px;width:100%;font-size:12px;color:var(--gray-400);font-weight:500;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px">
+        <span>🔧</span> Simular: seguro vencido
+      </button>
+      <button onclick="restaurarSeguro()" id="btn-restaurar-seg" style="display:none;background:transparent;border:1.5px dashed var(--success);border-radius:10px;padding:10px 16px;width:100%;font-size:12px;color:var(--success);font-weight:500;cursor:pointer;display:none;align-items:center;justify-content:center;gap:6px">
+        <span>↩️</span> Restaurar: seguro ativo
+      </button>
     </div>
     <div style="padding:16px 24px 0">
       <div class="stitle">Coberturas incluídas</div>
@@ -744,6 +825,69 @@ function filtAcess(btn,cat){
   document.querySelectorAll('.ac-item').forEach(c=>{ c.style.display=(cat==='all'||c.dataset.cat===cat)?'block':'none'; });
 }
 
+// TABS TROCAR VEÍCULO
+let consPrazo = 72;
+function selTrocarTab(tab){
+  const agora = document.getElementById('trocar-agora-content');
+  const prog  = document.getElementById('trocar-prog-content');
+  const tA    = document.getElementById('tab-trocar-agora');
+  const tP    = document.getElementById('tab-trocar-prog');
+  if(tab === 'agora'){
+    agora.style.display = 'block'; prog.style.display = 'none';
+    tA.style.background = 'white'; tA.style.color = 'var(--red)';
+    tP.style.background = 'rgba(255,255,255,.15)'; tP.style.color = 'white';
+  } else {
+    agora.style.display = 'none'; prog.style.display = 'block';
+    tP.style.background = 'white'; tP.style.color = 'var(--red)';
+    tA.style.background = 'rgba(255,255,255,.15)'; tA.style.color = 'white';
+    calcConsorcio();
+  }
+}
+function selConsPrazo(el, meses){
+  document.querySelectorAll('#cons-prazo-sel .tab').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  consPrazo = meses;
+  calcConsorcio();
+}
+function calcConsorcio(){
+  const valor = parseFloat(document.getElementById('cons-valor').value) || 150000;
+  const taxaAdmAnual = 0.012;
+  const totalTaxa = valor * taxaAdmAnual * (consPrazo / 12);
+  const totalPagar = valor + totalTaxa;
+  const parcela = totalPagar / consPrazo;
+  // financiamento equivalente: 48x a 1.29% ao mês
+  const r = 0.0129;
+  const financiar = Math.max(valor - 48308, 0);
+  const parcelaFin = financiar * (r * Math.pow(1+r,48)) / (Math.pow(1+r,48)-1);
+  const totalFin = parcelaFin * 48;
+  const economia = totalFin - totalPagar;
+  const lance = valor * 0.3;
+  const fmt = v => 'R$ ' + v.toLocaleString('pt-BR',{minimumFractionDigits:0,maximumFractionDigits:0});
+  document.getElementById('cons-parcela').textContent = fmt(parcela);
+  document.getElementById('cons-economia').textContent = fmt(Math.max(economia, 0));
+  document.getElementById('cons-lance').textContent = fmt(lance);
+  document.getElementById('cons-credito').textContent = fmt(valor);
+}
+
+// SIMULAR VENCIMENTO DO SEGURO
+function simularVencimento(){
+  document.getElementById('seg-card-ativo').style.display='none';
+  document.getElementById('seg-card-vencido').style.display='block';
+  document.getElementById('btn-simular-seg').style.display='none';
+  document.getElementById('btn-restaurar-seg').style.display='flex';
+  showToast('⚠️ Simulando: seguro vencido');
+}
+function restaurarSeguro(){
+  document.getElementById('seg-card-ativo').style.display='block';
+  document.getElementById('seg-card-vencido').style.display='none';
+  document.getElementById('btn-simular-seg').style.display='flex';
+  document.getElementById('btn-restaurar-seg').style.display='none';
+  showToast('✅ Seguro restaurado para ativo');
+}
+function renovarSeguro(){
+  showToast('✅ Renovação contratada! Nova vigência: jan/2026');
+  setTimeout(()=>{ restaurarSeguro(); }, 1800);
+}
 // CUPOM
 function copyCupom(btn,code){
   navigator.clipboard?.writeText(code).catch(()=>{});
@@ -757,151 +901,183 @@ function copyCupom(btn,code){
 <div class="screen" id="s-trocar" style="display:none;flex-direction:column">
   <div class="sb red"><span class="st">9:41</span><div class="si"><span>📶</span><span>🔋</span></div></div>
   <div class="scroll-area">
-    <div style="background:linear-gradient(135deg,var(--red),var(--red-dark));padding:16px 24px 28px;position:relative;overflow:hidden">
+    <div style="background:linear-gradient(135deg,var(--red),var(--red-dark));padding:16px 24px 20px;position:relative;overflow:hidden">
       <div style="position:absolute;top:-40px;right:-40px;width:180px;height:180px;background:rgba(255,255,255,.05);border-radius:50%"></div>
       <button class="hback" onclick="goTo('s-car')" style="margin-bottom:12px">‹</button>
       <div style="font-family:var(--font-display);color:white;font-size:22px;font-weight:800;letter-spacing:-.5px">Trocar de Veículo</div>
-      <div style="color:rgba(255,255,255,.7);font-size:13px;margin-top:4px">Use seu carro como entrada e simule a troca</div>
+      <div style="color:rgba(255,255,255,.7);font-size:13px;margin-top:4px">Escolha como quer fazer sua próxima troca</div>
+      <div style="display:flex;gap:8px;margin-top:16px">
+        <div id="tab-trocar-agora" onclick="selTrocarTab('agora')" style="flex:1;background:white;color:var(--red);border-radius:12px;padding:10px;text-align:center;cursor:pointer;font-family:var(--font-display);font-size:13px;font-weight:700">🔄 Troque agora</div>
+        <div id="tab-trocar-prog" onclick="selTrocarTab('prog')" style="flex:1;background:rgba(255,255,255,.15);color:white;border:1px solid rgba(255,255,255,.3);border-radius:12px;padding:10px;text-align:center;cursor:pointer;font-family:var(--font-display);font-size:13px;font-weight:600">📅 Programe a troca</div>
+      </div>
     </div>
 
-    <div style="padding:16px 24px 0">
-      <!-- seu carro atual -->
-      <div class="stitle">Seu veículo atual</div>
-      <div style="background:linear-gradient(135deg,#1a1a1a,#2d2d2d);border-radius:20px;padding:18px;margin-bottom:4px;display:flex;align-items:center;gap:14px">
-        <span style="font-size:44px">🚗</span>
-        <div style="flex:1">
-          <div style="font-family:var(--font-display);color:white;font-size:16px;font-weight:800">Civic Prata</div>
-          <div style="color:rgba(255,255,255,.55);font-size:12px;margin-top:2px">Honda Civic EXL 2022 · 38.240 km</div>
+    <!-- ABA: TROQUE AGORA -->
+    <div id="trocar-agora-content">
+      <div style="padding:16px 24px 0">
+        <div class="stitle">Seu veículo atual</div>
+        <div style="background:linear-gradient(135deg,#1a1a1a,#2d2d2d);border-radius:20px;padding:18px;margin-bottom:4px;display:flex;align-items:center;gap:14px">
+          <span style="font-size:44px">🚗</span>
+          <div style="flex:1"><div style="font-family:var(--font-display);color:white;font-size:16px;font-weight:800">Civic Prata</div><div style="color:rgba(255,255,255,.55);font-size:12px;margin-top:2px">Honda Civic EXL 2022 · 38.240 km</div></div>
+          <div style="text-align:right"><div style="color:rgba(255,255,255,.5);font-size:10px;text-transform:uppercase;letter-spacing:.5px">FIPE</div><div style="font-family:var(--font-display);color:white;font-size:18px;font-weight:800;margin-top:2px">R$ 93.200</div></div>
         </div>
-        <div style="text-align:right">
-          <div style="color:rgba(255,255,255,.5);font-size:10px;text-transform:uppercase;letter-spacing:.5px">FIPE</div>
-          <div style="font-family:var(--font-display);color:white;font-size:18px;font-weight:800;margin-top:2px">R$ 93.200</div>
-        </div>
-      </div>
-      <div style="font-size:11px;color:var(--gray-400);margin-bottom:16px;padding:0 4px">Saldo devedor: R$ 44.892 · Valor líquido para troca: <strong style="color:var(--success)">R$ 48.308</strong></div>
-
-      <!-- preferências -->
-      <div class="stitle">Suas preferências</div>
-      <div class="ef" style="margin-bottom:10px">
-        <div class="efl">Tipo de veículo</div>
-        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:4px" id="tipo-vei">
-          <div class="tab active" onclick="selPref(this,'tipo-vei')" style="font-size:12px;padding:6px 12px">🚗 Sedan</div>
-          <div class="tab" onclick="selPref(this,'tipo-vei')" style="font-size:12px;padding:6px 12px">🚙 SUV</div>
-          <div class="tab" onclick="selPref(this,'tipo-vei')" style="font-size:12px;padding:6px 12px">🚐 Hatch</div>
-          <div class="tab" onclick="selPref(this,'tipo-vei')" style="font-size:12px;padding:6px 12px">⚡ Elétrico</div>
-        </div>
-      </div>
-      <div style="display:flex;gap:10px">
-        <div class="ef" style="flex:1;margin-bottom:10px">
-          <div class="efl">Ano mínimo</div>
-          <div class="eir"><input class="ei" type="number" value="2022" id="pref-ano"></div>
-        </div>
-        <div class="ef" style="flex:1;margin-bottom:10px">
-          <div class="efl">Parcela máx.</div>
-          <div class="eir"><span style="font-size:12px;color:var(--gray-400)">R$</span><input class="ei" type="number" value="2000" id="pref-parc" style="text-align:right"></div>
-        </div>
-      </div>
-      <button class="bp" style="margin-bottom:20px" onclick="buscarSugestoes()">🔍 Buscar veículos para mim</button>
-
-      <!-- sugestões -->
-      <div id="sugestoes-area" style="display:none">
-        <div class="stitle">Sugestões para você</div>
-        <div style="font-size:12px;color:var(--gray-400);margin-top:-8px;margin-bottom:14px">Baseado no seu perfil · Plataforma parceira</div>
-
-        <!-- card sugestão 1 -->
-        <div id="sug1" style="background:white;border-radius:20px;overflow:hidden;box-shadow:var(--shadow-md);margin-bottom:14px">
-          <div style="height:140px;background:linear-gradient(135deg,#1B3A4B,#2E6B8A);display:flex;align-items:center;justify-content:center;position:relative">
-            <span style="font-size:72px;filter:drop-shadow(0 8px 16px rgba(0,0,0,.3))">🚙</span>
-            <div style="position:absolute;top:12px;left:12px;background:var(--red);color:white;border-radius:8px;padding:4px 10px;font-size:11px;font-weight:700">Recomendado</div>
-            <div style="position:absolute;bottom:10px;right:10px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);border-radius:6px;padding:3px 8px;font-size:11px;color:white;font-weight:600">0 km</div>
-          </div>
-          <div style="padding:16px">
-            <div style="font-family:var(--font-display);font-size:17px;font-weight:800;color:var(--gray-900)">Toyota Corolla Cross</div>
-            <div style="font-size:12px;color:var(--gray-400);margin-top:2px">XRE · 2024 · Flex · CVT</div>
-            <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-top:12px">
-              <div>
-                <div style="font-size:11px;color:var(--gray-400)">Valor do veículo</div>
-                <div style="font-family:var(--font-display);font-size:20px;font-weight:800;color:var(--gray-900)">R$ 152.900</div>
-              </div>
-              <button class="bp" style="width:auto;padding:10px 16px;font-size:13px" onclick="simularTroca('Toyota Corolla Cross XRE 2024',152900)">Simular troca</button>
-            </div>
+        <div style="font-size:11px;color:var(--gray-400);margin-bottom:16px;padding:0 4px">Saldo devedor: R$ 44.892 · Valor líquido para troca: <strong style="color:var(--success)">R$ 48.308</strong></div>
+        <div class="stitle">Suas preferências</div>
+        <div class="ef" style="margin-bottom:10px">
+          <div class="efl">Tipo de veículo</div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:4px" id="tipo-vei">
+            <div class="tab active" onclick="selPref(this,'tipo-vei')" style="font-size:12px;padding:6px 12px">🚗 Sedan</div>
+            <div class="tab" onclick="selPref(this,'tipo-vei')" style="font-size:12px;padding:6px 12px">🚙 SUV</div>
+            <div class="tab" onclick="selPref(this,'tipo-vei')" style="font-size:12px;padding:6px 12px">🚐 Hatch</div>
+            <div class="tab" onclick="selPref(this,'tipo-vei')" style="font-size:12px;padding:6px 12px">⚡ Elétrico</div>
           </div>
         </div>
-
-        <!-- card sugestão 2 -->
-        <div style="background:white;border-radius:20px;overflow:hidden;box-shadow:var(--shadow-md);margin-bottom:14px">
-          <div style="height:140px;background:linear-gradient(135deg,#1B5E20,#2E7D32);display:flex;align-items:center;justify-content:center;position:relative">
-            <span style="font-size:72px;filter:drop-shadow(0 8px 16px rgba(0,0,0,.3))">🚗</span>
-            <div style="position:absolute;bottom:10px;right:10px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);border-radius:6px;padding:3px 8px;font-size:11px;color:white;font-weight:600">Seminovo</div>
-          </div>
-          <div style="padding:16px">
-            <div style="font-family:var(--font-display);font-size:17px;font-weight:800;color:var(--gray-900)">Honda Civic Touring</div>
-            <div style="font-size:12px;color:var(--gray-400);margin-top:2px">2023 · Flex · CVT · 12.000 km</div>
-            <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-top:12px">
-              <div>
-                <div style="font-size:11px;color:var(--gray-400)">Valor do veículo</div>
-                <div style="font-family:var(--font-display);font-size:20px;font-weight:800;color:var(--gray-900)">R$ 138.500</div>
-              </div>
-              <button class="bp" style="width:auto;padding:10px 16px;font-size:13px" onclick="simularTroca('Honda Civic Touring 2023',138500)">Simular troca</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- simulação financeira -->
-      <div id="simulacao-area" style="display:none;margin-bottom:32px">
-        <div style="font-family:var(--font-display);font-size:18px;font-weight:800;color:var(--gray-900);letter-spacing:-.4px;margin-bottom:4px" id="sim-titulo">Simulação da Troca</div>
-        <div style="font-size:13px;color:var(--gray-400);margin-bottom:16px" id="sim-subtitulo">Toyota Corolla Cross XRE 2024</div>
-
-        <!-- resumo financeiro -->
-        <div style="background:white;border-radius:var(--radius);box-shadow:var(--shadow);padding:20px;margin-bottom:12px">
-          <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--gray-100)">
-            <div style="font-size:13px;color:var(--gray-600)">Valor do novo veículo</div>
-            <div id="sim-val-novo" style="font-family:var(--font-display);font-size:15px;font-weight:700;color:var(--gray-900)">R$ 152.900</div>
-          </div>
-          <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--gray-100)">
-            <div style="font-size:13px;color:var(--gray-600)">(-) Seu Civic como entrada</div>
-            <div style="font-family:var(--font-display);font-size:15px;font-weight:700;color:var(--success)">- R$ 48.308</div>
-          </div>
-          <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--gray-100)">
-            <div style="font-size:13px;color:var(--gray-600)">Valor a financiar</div>
-            <div id="sim-financiar" style="font-family:var(--font-display);font-size:15px;font-weight:700;color:var(--gray-900)">R$ 104.592</div>
-          </div>
-          <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0">
-            <div style="font-size:13px;color:var(--gray-600)">Parcela estimada (48x)</div>
-            <div id="sim-parcela" style="font-family:var(--font-display);font-size:18px;font-weight:800;color:var(--red)">R$ 2.741/mês</div>
-          </div>
-        </div>
-
-        <!-- seguro e ipva estimados -->
-        <div style="background:white;border-radius:var(--radius);box-shadow:var(--shadow);padding:20px;margin-bottom:12px">
-          <div style="font-family:var(--font-display);font-size:13px;font-weight:700;color:var(--gray-600);letter-spacing:.3px;margin-bottom:12px;text-transform:uppercase">Custos estimados do novo veículo</div>
-          <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--gray-100)">
-            <div style="display:flex;align-items:center;gap:8px"><span>🛡️</span><div style="font-size:13px;color:var(--gray-600)">Seguro estimado</div></div>
-            <div id="sim-seguro" style="font-family:var(--font-display);font-size:14px;font-weight:700;color:var(--gray-900)">~R$ 380/mês</div>
-          </div>
-          <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0">
-            <div style="display:flex;align-items:center;gap:8px"><span>📋</span><div style="font-size:13px;color:var(--gray-600)">IPVA estimado (anual)</div></div>
-            <div id="sim-ipva" style="font-family:var(--font-display);font-size:14px;font-weight:700;color:var(--gray-900)">~R$ 5.351</div>
-          </div>
-        </div>
-
-        <!-- custo total mensal -->
-        <div style="background:linear-gradient(135deg,var(--red),var(--red-dark));border-radius:var(--radius);padding:20px;margin-bottom:12px">
-          <div style="color:rgba(255,255,255,.7);font-size:12px;text-transform:uppercase;letter-spacing:.5px">Custo total mensal estimado</div>
-          <div id="sim-total" style="font-family:var(--font-display);color:white;font-size:32px;font-weight:800;margin-top:6px;letter-spacing:-1px">R$ 3.567</div>
-          <div style="color:rgba(255,255,255,.6);font-size:12px;margin-top:4px">Parcela + seguro + IPVA (÷12)</div>
-        </div>
-
         <div style="display:flex;gap:10px">
-          <button class="bp" style="flex:1" onclick="showToast('✅ Proposta enviada! Em breve entraremos em contato.')">Quero essa troca</button>
-          <button class="bs" style="flex:1" onclick="document.getElementById('simulacao-area').style.display='none'">Voltar</button>
+          <div class="ef" style="flex:1;margin-bottom:10px"><div class="efl">Ano mínimo</div><div class="eir"><input class="ei" type="number" value="2022" id="pref-ano"></div></div>
+          <div class="ef" style="flex:1;margin-bottom:10px"><div class="efl">Parcela máx.</div><div class="eir"><span style="font-size:12px;color:var(--gray-400)">R$</span><input class="ei" type="number" value="2000" id="pref-parc" style="text-align:right"></div></div>
+        </div>
+        <button class="bp" style="margin-bottom:20px" onclick="buscarSugestoes()">🔍 Buscar veículos para mim</button>
+        <div id="sugestoes-area" style="display:none">
+          <div class="stitle">Sugestões para você</div>
+          <div style="font-size:12px;color:var(--gray-400);margin-top:-8px;margin-bottom:14px">Baseado no seu perfil · Plataforma parceira</div>
+          <div id="sug1" style="background:white;border-radius:20px;overflow:hidden;box-shadow:var(--shadow-md);margin-bottom:14px">
+            <div style="height:140px;background:linear-gradient(135deg,#1B3A4B,#2E6B8A);display:flex;align-items:center;justify-content:center;position:relative">
+              <span style="font-size:72px;filter:drop-shadow(0 8px 16px rgba(0,0,0,.3))">🚙</span>
+              <div style="position:absolute;top:12px;left:12px;background:var(--red);color:white;border-radius:8px;padding:4px 10px;font-size:11px;font-weight:700">Recomendado</div>
+              <div style="position:absolute;bottom:10px;right:10px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);border-radius:6px;padding:3px 8px;font-size:11px;color:white;font-weight:600">0 km</div>
+            </div>
+            <div style="padding:16px">
+              <div style="font-family:var(--font-display);font-size:17px;font-weight:800;color:var(--gray-900)">Toyota Corolla Cross</div>
+              <div style="font-size:12px;color:var(--gray-400);margin-top:2px">XRE · 2024 · Flex · CVT</div>
+              <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-top:12px">
+                <div><div style="font-size:11px;color:var(--gray-400)">Valor do veículo</div><div style="font-family:var(--font-display);font-size:20px;font-weight:800;color:var(--gray-900)">R$ 152.900</div></div>
+                <button class="bp" style="width:auto;padding:10px 16px;font-size:13px" onclick="simularTroca('Toyota Corolla Cross XRE 2024',152900)">Simular troca</button>
+              </div>
+            </div>
+          </div>
+          <div style="background:white;border-radius:20px;overflow:hidden;box-shadow:var(--shadow-md);margin-bottom:14px">
+            <div style="height:140px;background:linear-gradient(135deg,#1B5E20,#2E7D32);display:flex;align-items:center;justify-content:center;position:relative">
+              <span style="font-size:72px;filter:drop-shadow(0 8px 16px rgba(0,0,0,.3))">🚗</span>
+              <div style="position:absolute;bottom:10px;right:10px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);border-radius:6px;padding:3px 8px;font-size:11px;color:white;font-weight:600">Seminovo</div>
+            </div>
+            <div style="padding:16px">
+              <div style="font-family:var(--font-display);font-size:17px;font-weight:800;color:var(--gray-900)">Honda Civic Touring</div>
+              <div style="font-size:12px;color:var(--gray-400);margin-top:2px">2023 · Flex · CVT · 12.000 km</div>
+              <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-top:12px">
+                <div><div style="font-size:11px;color:var(--gray-400)">Valor do veículo</div><div style="font-family:var(--font-display);font-size:20px;font-weight:800;color:var(--gray-900)">R$ 138.500</div></div>
+                <button class="bp" style="width:auto;padding:10px 16px;font-size:13px" onclick="simularTroca('Honda Civic Touring 2023',138500)">Simular troca</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="simulacao-area" style="display:none;margin-bottom:32px">
+          <div style="font-family:var(--font-display);font-size:18px;font-weight:800;color:var(--gray-900);letter-spacing:-.4px;margin-bottom:4px" id="sim-titulo">Simulação da Troca</div>
+          <div style="font-size:13px;color:var(--gray-400);margin-bottom:16px" id="sim-subtitulo">Toyota Corolla Cross XRE 2024</div>
+          <div style="background:white;border-radius:var(--radius);box-shadow:var(--shadow);padding:20px;margin-bottom:12px">
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--gray-100)"><div style="font-size:13px;color:var(--gray-600)">Valor do novo veículo</div><div id="sim-val-novo" style="font-family:var(--font-display);font-size:15px;font-weight:700;color:var(--gray-900)">R$ 152.900</div></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--gray-100)"><div style="font-size:13px;color:var(--gray-600)">(-) Seu Civic como entrada</div><div style="font-family:var(--font-display);font-size:15px;font-weight:700;color:var(--success)">- R$ 48.308</div></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--gray-100)"><div style="font-size:13px;color:var(--gray-600)">Valor a financiar</div><div id="sim-financiar" style="font-family:var(--font-display);font-size:15px;font-weight:700;color:var(--gray-900)">R$ 104.592</div></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0"><div style="font-size:13px;color:var(--gray-600)">Parcela estimada (48x)</div><div id="sim-parcela" style="font-family:var(--font-display);font-size:18px;font-weight:800;color:var(--red)">R$ 2.741/mês</div></div>
+          </div>
+          <div style="background:white;border-radius:var(--radius);box-shadow:var(--shadow);padding:20px;margin-bottom:12px">
+            <div style="font-family:var(--font-display);font-size:13px;font-weight:700;color:var(--gray-600);letter-spacing:.3px;margin-bottom:12px;text-transform:uppercase">Custos estimados</div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--gray-100)"><div style="display:flex;align-items:center;gap:8px"><span>🛡️</span><div style="font-size:13px;color:var(--gray-600)">Seguro estimado</div></div><div id="sim-seguro" style="font-family:var(--font-display);font-size:14px;font-weight:700;color:var(--gray-900)">~R$ 380/mês</div></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0"><div style="display:flex;align-items:center;gap:8px"><span>📋</span><div style="font-size:13px;color:var(--gray-600)">IPVA estimado (anual)</div></div><div id="sim-ipva" style="font-family:var(--font-display);font-size:14px;font-weight:700;color:var(--gray-900)">~R$ 5.351</div></div>
+          </div>
+          <div style="background:linear-gradient(135deg,var(--red),var(--red-dark));border-radius:var(--radius);padding:20px;margin-bottom:12px">
+            <div style="color:rgba(255,255,255,.7);font-size:12px;text-transform:uppercase;letter-spacing:.5px">Custo total mensal estimado</div>
+            <div id="sim-total" style="font-family:var(--font-display);color:white;font-size:32px;font-weight:800;margin-top:6px;letter-spacing:-1px">R$ 3.567</div>
+            <div style="color:rgba(255,255,255,.6);font-size:12px;margin-top:4px">Parcela + seguro + IPVA (÷12)</div>
+          </div>
+          <div style="display:flex;gap:10px">
+            <button class="bp" style="flex:1" onclick="showToast('✅ Proposta enviada! Em breve entraremos em contato.')">Quero essa troca</button>
+            <button class="bs" style="flex:1" onclick="document.getElementById('simulacao-area').style.display='none'">Voltar</button>
+          </div>
         </div>
       </div>
+    </div>
 
+    <!-- ABA: PROGRAME A TROCA (CONSÓRCIO) -->
+    <div id="trocar-prog-content" style="display:none">
+      <div style="padding:16px 24px 0">
+        <!-- hero -->
+        <div style="background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);border-radius:20px;padding:22px;margin-bottom:16px;position:relative;overflow:hidden">
+          <div style="position:absolute;top:-20px;right:-20px;width:120px;height:120px;background:rgba(255,255,255,.04);border-radius:50%"></div>
+          <div style="font-size:36px;margin-bottom:10px">🏆</div>
+          <div style="font-family:var(--font-display);color:white;font-size:20px;font-weight:800">Consórcio de Veículo</div>
+          <div style="color:rgba(255,255,255,.6);font-size:13px;margin-top:6px;line-height:1.5">Planeje a troca sem juros, com parcelas que cabem no seu bolso e contemplação por lance ou sorteio.</div>
+          <div style="display:flex;gap:10px;margin-top:16px">
+            <div style="flex:1;background:rgba(255,255,255,.08);border-radius:10px;padding:10px;text-align:center"><div style="font-family:var(--font-display);color:white;font-size:18px;font-weight:800">0%</div><div style="color:rgba(255,255,255,.5);font-size:10px;margin-top:2px">Juros</div></div>
+            <div style="flex:1;background:rgba(255,255,255,.08);border-radius:10px;padding:10px;text-align:center"><div style="font-family:var(--font-display);color:white;font-size:18px;font-weight:800">até 80x</div><div style="color:rgba(255,255,255,.5);font-size:10px;margin-top:2px">Parcelas</div></div>
+            <div style="flex:1;background:rgba(255,255,255,.08);border-radius:10px;padding:10px;text-align:center"><div style="font-family:var(--font-display);color:white;font-size:18px;font-weight:800">Lance</div><div style="color:rgba(255,255,255,.5);font-size:10px;margin-top:2px">Antecipado</div></div>
+          </div>
+        </div>
+
+        <!-- comparativo -->
+        <div class="stitle">Financiamento vs. Consórcio</div>
+        <div style="background:white;border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;margin-bottom:16px">
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;background:var(--gray-100);padding:10px 16px">
+            <div style="font-size:11px;font-weight:700;color:var(--gray-400)"></div>
+            <div style="font-size:11px;font-weight:700;color:var(--gray-600);text-align:center;text-transform:uppercase">Financ.</div>
+            <div style="font-size:11px;font-weight:700;color:var(--red);text-align:center;text-transform:uppercase">Consórcio</div>
+          </div>
+          <div style="padding:0 16px">
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;padding:12px 0;border-bottom:1px solid var(--gray-100);align-items:center"><div style="font-size:13px;color:var(--gray-600)">Juros</div><div style="font-size:13px;font-weight:600;color:var(--danger);text-align:center">1,29%/mês</div><div style="font-size:13px;font-weight:600;color:var(--success);text-align:center">0%</div></div>
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;padding:12px 0;border-bottom:1px solid var(--gray-100);align-items:center"><div style="font-size:13px;color:var(--gray-600)">Parcela</div><div style="font-size:13px;font-weight:600;color:var(--gray-900);text-align:center">R$ 2.766</div><div style="font-size:13px;font-weight:600;color:var(--success);text-align:center">R$ 1.249</div></div>
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;padding:12px 0;border-bottom:1px solid var(--gray-100);align-items:center"><div style="font-size:13px;color:var(--gray-600)">Custo total</div><div style="font-size:13px;font-weight:600;color:var(--danger);text-align:center">R$ 182k</div><div style="font-size:13px;font-weight:600;color:var(--success);text-align:center">R$ 99k</div></div>
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;padding:12px 0;align-items:center"><div style="font-size:13px;color:var(--gray-600)">Uso imediato</div><div style="text-align:center;color:var(--success)">✓</div><div style="text-align:center;font-size:12px;color:var(--gray-400)">Ao contemplar</div></div>
+          </div>
+        </div>
+
+        <!-- simulador -->
+        <div class="stitle">Simule seu consórcio</div>
+        <div class="ef"><div class="efl">Valor do veículo desejado (R$)</div><div class="eir"><span style="font-size:13px;color:var(--gray-400)">R$</span><input class="ei" type="number" id="cons-valor" value="150000" oninput="calcConsorcio()" style="text-align:right"></div></div>
+        <div class="ef">
+          <div class="efl">Prazo</div>
+          <div style="display:flex;gap:8px;margin-top:4px" id="cons-prazo-sel">
+            <div class="tab" onclick="selConsPrazo(this,60)" style="flex:1;text-align:center;font-size:12px">60x</div>
+            <div class="tab active" onclick="selConsPrazo(this,72)" style="flex:1;text-align:center;font-size:12px">72x</div>
+            <div class="tab" onclick="selConsPrazo(this,80)" style="flex:1;text-align:center;font-size:12px">80x</div>
+          </div>
+        </div>
+
+        <!-- resultado -->
+        <div style="background:linear-gradient(135deg,#0f2027,#2c5364);border-radius:var(--radius);padding:20px;margin-bottom:12px">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px">
+            <div>
+              <div style="color:rgba(255,255,255,.6);font-size:11px;text-transform:uppercase;letter-spacing:.5px">Parcela mensal</div>
+              <div id="cons-parcela" style="font-family:var(--font-display);color:white;font-size:32px;font-weight:800;letter-spacing:-1px;margin-top:4px">R$ 1.249</div>
+              <div style="color:rgba(255,255,255,.5);font-size:12px;margin-top:2px">72x · Taxa adm. 1,2% a.a.</div>
+            </div>
+            <div style="background:rgba(29,185,84,.2);border:1px solid rgba(29,185,84,.4);border-radius:10px;padding:8px 12px;text-align:center">
+              <div style="font-size:10px;color:rgba(255,255,255,.5)">Economia vs. financ.</div>
+              <div id="cons-economia" style="font-family:var(--font-display);color:var(--success);font-size:16px;font-weight:800;margin-top:2px">R$ 82.522</div>
+            </div>
+          </div>
+          <div style="background:rgba(255,255,255,.07);border-radius:10px;padding:12px;display:flex;gap:12px">
+            <div style="flex:1;text-align:center"><div style="color:rgba(255,255,255,.4);font-size:10px">Lance mínimo (30%)</div><div id="cons-lance" style="font-family:var(--font-display);color:white;font-size:14px;font-weight:700;margin-top:2px">R$ 45.000</div></div>
+            <div style="width:1px;background:rgba(255,255,255,.1)"></div>
+            <div style="flex:1;text-align:center"><div style="color:rgba(255,255,255,.4);font-size:10px">Crédito total</div><div id="cons-credito" style="font-family:var(--font-display);color:white;font-size:14px;font-weight:700;margin-top:2px">R$ 150.000</div></div>
+            <div style="width:1px;background:rgba(255,255,255,.1)"></div>
+            <div style="flex:1;text-align:center"><div style="color:rgba(255,255,255,.4);font-size:10px">Taxa adm.</div><div style="font-family:var(--font-display);color:white;font-size:14px;font-weight:700;margin-top:2px">1,2% a.a.</div></div>
+          </div>
+        </div>
+
+        <!-- como funciona -->
+        <div class="stitle">Como funciona</div>
+        <div style="background:white;border-radius:var(--radius);box-shadow:var(--shadow);padding:16px;margin-bottom:16px">
+          <div style="display:flex;gap:14px;padding:10px 0;border-bottom:1px solid var(--gray-100)"><div style="width:32px;height:32px;background:#FFF0F0;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0">1️⃣</div><div><div style="font-size:14px;font-weight:600;color:var(--gray-900)">Você contrata e começa a pagar</div><div style="font-size:12px;color:var(--gray-400);margin-top:2px">Parcelas mensais sem juros, só taxa de administração</div></div></div>
+          <div style="display:flex;gap:14px;padding:10px 0;border-bottom:1px solid var(--gray-100)"><div style="width:32px;height:32px;background:#FFF0F0;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0">2️⃣</div><div><div style="font-size:14px;font-weight:600;color:var(--gray-900)">Todo mês há contemplações</div><div style="font-size:12px;color:var(--gray-400);margin-top:2px">Por sorteio ou lance — quem oferta mais é contemplado primeiro</div></div></div>
+          <div style="display:flex;gap:14px;padding:10px 0"><div style="width:32px;height:32px;background:#FFF0F0;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0">3️⃣</div><div><div style="font-size:14px;font-weight:600;color:var(--gray-900)">Contemplado, escolhe seu veículo</div><div style="font-size:12px;color:var(--gray-400);margin-top:2px">Carta de crédito no valor contratado para qualquer veículo</div></div></div>
+        </div>
+
+        <button class="bp" onclick="showToast('✅ Solicitação enviada! Um especialista entrará em contato.')">📅 Quero programar minha troca</button>
+        <button class="bs" style="margin-top:10px;margin-bottom:32px" onclick="selTrocarTab('agora')">← Ver troca imediata</button>
+      </div>
     </div>
   </div>
 </div>
+
 
 <!-- ===== IPVA ===== -->
 <div class="screen" id="s-ipva" style="display:none;flex-direction:column">
