@@ -107,18 +107,17 @@ body{font-family:var(--font-body);background:#ECECEC;display:flex;justify-conten
   <div class="scroll-area">
     <div style="background:linear-gradient(180deg,var(--red),var(--red-dark));padding:16px 24px 28px;position:relative;overflow:hidden">
       <div style="position:absolute;top:-40px;right:-40px;width:200px;height:200px;background:rgba(255,255,255,.05);border-radius:50%"></div>
-      <div style="color:rgba(255,255,255,.75);font-size:14px">Bom dia,</div>
-      <div style="font-family:var(--font-display);color:white;font-size:26px;font-weight:800;letter-spacing:-.8px;margin-top:2px">Carlos Mendes 👋</div>
-      <div style="display:flex;gap:8px;margin-top:16px;flex-wrap:wrap">
-        <div onclick="goTo('s-fin')" style="background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.2);border-radius:20px;padding:6px 12px;display:flex;align-items:center;gap:6px;font-size:12px;color:white;font-weight:500;cursor:pointer"><span style="width:6px;height:6px;border-radius:50%;background:#FFD700;display:inline-block"></span>Parcela vencendo</div>
-        <div onclick="goTo('s-car2')" style="background:rgba(255,100,100,.3);border:1px solid rgba(255,150,150,.5);border-radius:20px;padding:6px 12px;display:flex;align-items:center;gap:6px;font-size:12px;color:white;font-weight:600;cursor:pointer"><span style="width:6px;height:6px;border-radius:50%;background:#FF4444;display:inline-block;animation:pulse-dot 1.2s infinite"></span>Corolla sem seguro</div>
-        <div style="background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.2);border-radius:20px;padding:6px 12px;display:flex;align-items:center;gap:6px;font-size:12px;color:white;font-weight:500;cursor:pointer"><span style="width:6px;height:6px;border-radius:50%;background:#FF6B6B;display:inline-block"></span>IPVA pendente</div>
-      </div>
+      <div style="color:rgba(255,255,255,.75);font-size:14px">Olá,</div>
+      <div style="font-family:var(--font-display);color:white;font-size:26px;font-weight:800;letter-spacing:-.8px;margin-top:2px">Livia Lacerda 👋</div>
     </div>
     <div style="padding:16px 24px 0;display:flex;justify-content:space-between;align-items:center"><div class="stitle" style="margin-bottom:0">Minha Garagem</div><span style="font-size:13px;color:var(--red);font-weight:600;cursor:pointer">Ver todos</span></div>
     <div style="display:flex;gap:16px;overflow-x:auto;padding:12px 24px 4px;scrollbar-width:none">
       <!-- CARRO 1 — Civic Prata -->
-      <div onclick="goTo('s-car')" style="min-width:240px;background:white;border-radius:20px;overflow:hidden;box-shadow:var(--shadow-md);cursor:pointer;flex-shrink:0">
+      <div onclick="goTo('s-car')" style="min-width:240px;background:white;border-radius:20px;overflow:hidden;box-shadow:var(--shadow-md);cursor:pointer;flex-shrink:0;position:relative">
+        <!-- badge multa pulsante -->
+        <div style="position:absolute;top:10px;left:10px;z-index:10;background:#CC6600;color:white;border-radius:20px;padding:4px 10px;font-size:11px;font-weight:700;display:flex;align-items:center;gap:5px;box-shadow:0 2px 12px rgba(180,80,0,.5)">
+          <span style="width:6px;height:6px;border-radius:50%;background:white;display:inline-block;animation:pulse-dot 1.4s infinite"></span>1 multa
+        </div>
         <div id="c1img" style="height:130px;background:linear-gradient(135deg,#1a1a1a,#333);display:flex;align-items:center;justify-content:center;position:relative;background-size:cover;background-position:center">
           <span id="c1emoji" style="font-size:64px;filter:drop-shadow(0 8px 16px rgba(0,0,0,.3))">🚗</span>
           <div style="position:absolute;bottom:10px;right:10px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);border-radius:6px;padding:3px 8px;font-size:11px;color:white;font-weight:600;letter-spacing:1px">ABC-1D23</div>
@@ -134,8 +133,7 @@ body{font-family:var(--font-body);background:#ECECEC;display:flex;justify-conten
         </div>
       </div>
 
-      <!-- CARRO 2 — Corolla Preto SEM seguro -->
-      <div onclick="goTo('s-car2')" style="min-width:240px;background:white;border-radius:20px;overflow:hidden;box-shadow:var(--shadow-md);cursor:pointer;flex-shrink:0;position:relative">
+      <!-- CARRO 2 — Corolla Preto SEM seguro -->      <div onclick="goTo('s-car2')" style="min-width:240px;background:white;border-radius:20px;overflow:hidden;box-shadow:var(--shadow-md);cursor:pointer;flex-shrink:0;position:relative">
         <!-- badge pulsante de alerta -->
         <div style="position:absolute;top:10px;left:10px;z-index:10;background:var(--danger);color:white;border-radius:20px;padding:4px 10px;font-size:11px;font-weight:700;display:flex;align-items:center;gap:5px;box-shadow:0 2px 12px rgba(204,0,0,.5)">
           <span style="width:6px;height:6px;border-radius:50%;background:white;display:inline-block;animation:pulse-dot 1.4s infinite"></span>Sem seguro
@@ -162,13 +160,21 @@ body{font-family:var(--font-body);background:#ECECEC;display:flex;justify-conten
       </div>
     </div>
     <div style="padding:12px 24px 0"><div class="stitle">Ações rápidas</div></div>
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;padding:0 24px">
-      <div onclick="goTo('s-fin')" style="display:flex;flex-direction:column;align-items:center;gap:8px;cursor:pointer"><div style="width:56px;height:56px;border-radius:16px;background:#FFF0F0;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:var(--shadow)">💳</div><div style="font-size:11px;color:var(--gray-600);font-weight:500;text-align:center">Pagar parcela</div></div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:0 24px">
+      <div onclick="goTo('s-fin')" style="display:flex;flex-direction:column;align-items:center;gap:8px;cursor:pointer"><div style="width:56px;height:56px;border-radius:16px;background:#FFF0F0;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:var(--shadow)">💳</div><div style="font-size:11px;color:var(--gray-600);font-weight:500;text-align:center">Meu Financiamento</div></div>
       <div onclick="goTo('s-seg-oferta')" style="display:flex;flex-direction:column;align-items:center;gap:8px;cursor:pointer"><div style="width:56px;height:56px;border-radius:16px;background:#F0F4FF;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:var(--shadow)">🛡️</div><div style="font-size:11px;color:var(--gray-600);font-weight:500;text-align:center">Seguros</div></div>
-      <div onclick="goTo('s-rev')" style="display:flex;flex-direction:column;align-items:center;gap:8px;cursor:pointer"><div style="width:56px;height:56px;border-radius:16px;background:#F0FFF4;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:var(--shadow)">🔧</div><div style="font-size:11px;color:var(--gray-600);font-weight:500;text-align:center">Revisão</div></div>
-      <div onclick="goTo('s-ipva')" style="display:flex;flex-direction:column;align-items:center;gap:8px;cursor:pointer"><div style="width:56px;height:56px;border-radius:16px;background:#FFFBF0;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:var(--shadow)">📋</div><div style="font-size:11px;color:var(--gray-600);font-weight:500;text-align:center">IPVA</div></div>
+      <div onclick="goTo('s-acess')" style="display:flex;flex-direction:column;align-items:center;gap:8px;cursor:pointer"><div style="width:56px;height:56px;border-radius:16px;background:#F3E5FF;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:var(--shadow)">🛍️</div><div style="font-size:11px;color:var(--gray-600);font-weight:500;text-align:center">Ofertas & Parceiros</div></div>
     </div>
     <div style="padding:20px 24px 32px">
+      <!-- botão onboarding discreto -->
+      <div onclick="abrirOnboarding()" style="display:flex;align-items:center;gap:10px;background:linear-gradient(135deg,#FFF0F0,#FFE5E5);border:1px solid rgba(204,0,0,.15);border-radius:14px;padding:14px 16px;cursor:pointer;margin-bottom:20px">
+        <div style="width:38px;height:38px;background:var(--red);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">✨</div>
+        <div style="flex:1">
+          <div style="font-family:var(--font-display);font-size:14px;font-weight:700;color:var(--gray-900)">Conheça tudo que você pode fazer</div>
+          <div style="font-size:12px;color:var(--gray-500);margin-top:2px">Gerencie seus veículos em um só lugar</div>
+        </div>
+        <span style="color:var(--red);font-size:18px">›</span>
+      </div>
       <div class="stitle">Alertas</div>
       <!-- ALERTA SEGURO INATIVO — destaque máximo -->
       <div onclick="goTo('s-car2')" class="seg-alert-banner" style="margin-bottom:10px">
@@ -188,9 +194,67 @@ body{font-family:var(--font-body);background:#ECECEC;display:flex;justify-conten
       <div style="background:linear-gradient(135deg,#FFE5E5,#FFCCCC);border-left:4px solid var(--danger);border-radius:var(--radius-sm);padding:12px 16px;display:flex;align-items:center;gap:10px;cursor:pointer"><span style="font-size:18px">🚨</span><div style="font-size:13px;color:#7D0000;font-weight:500;flex:1"><strong>IPVA 2024</strong> — Prazo final se aproximando</div><span style="color:var(--danger);font-size:18px">›</span></div>
     </div>
   </div>
-</div>
 
-<!-- ===== FINANCIAMENTO ===== -->
+  <!-- ONBOARDING BOTTOM SHEET -->
+  <div id="onboarding-overlay" onclick="fecharOnboarding()" style="display:none;position:absolute;inset:0;background:rgba(0,0,0,.5);z-index:100;border-radius:inherit"></div>
+  <div id="onboarding-sheet" style="display:none;position:absolute;bottom:0;left:0;right:0;background:white;border-radius:28px 28px 0 0;z-index:101;padding:0 0 32px;transform:translateY(100%);transition:transform .35s cubic-bezier(.32,1,.34,1)">
+    <!-- handle -->
+    <div style="display:flex;justify-content:center;padding:12px 0 4px">
+      <div style="width:40px;height:4px;background:var(--gray-200);border-radius:2px"></div>
+    </div>
+    <!-- fechar -->
+    <div onclick="fecharOnboarding()" style="position:absolute;top:16px;right:20px;width:32px;height:32px;background:var(--gray-100);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:16px;color:var(--gray-500)">✕</div>
+
+    <!-- slides -->
+    <div id="ob-slides" style="overflow:hidden">
+      <!-- slide 1 -->
+      <div class="ob-slide" style="padding:20px 28px 8px;text-align:center">
+        <div style="font-size:64px;margin-bottom:16px">🚗</div>
+        <div style="font-family:var(--font-display);font-size:22px;font-weight:800;color:var(--gray-900);line-height:1.2;margin-bottom:10px">Sua garagem no bolso</div>
+        <div style="font-size:15px;color:var(--gray-500);line-height:1.6">Todos os seus veículos, contratos e documentos reunidos em um único lugar. Sem ligações, sem filas, sem papel.</div>
+      </div>
+      <!-- slide 2 -->
+      <div class="ob-slide" style="display:none;padding:20px 28px 8px;text-align:center">
+        <div style="font-size:64px;margin-bottom:16px">💳</div>
+        <div style="font-family:var(--font-display);font-size:22px;font-weight:800;color:var(--gray-900);line-height:1.2;margin-bottom:10px">Financiamento sob controle</div>
+        <div style="font-size:15px;color:var(--gray-500);line-height:1.6">Acompanhe saldo devedor, parcelas e vencimentos. Pague com Pix ou boleto em segundos, sem precisar ligar para a central.</div>
+      </div>
+      <!-- slide 3 -->
+      <div class="ob-slide" style="display:none;padding:20px 28px 8px;text-align:center">
+        <div style="font-size:64px;margin-bottom:16px">🚨</div>
+        <div style="font-family:var(--font-display);font-size:22px;font-weight:800;color:var(--gray-900);line-height:1.2;margin-bottom:10px">Economize em multas</div>
+        <div style="font-size:15px;color:var(--gray-500);line-height:1.6">Consulte infrações por placa e pague dentro do prazo de 30 dias para garantir <strong style="color:var(--red)">20% de desconto</strong> automático.</div>
+      </div>
+      <!-- slide 4 -->
+      <div class="ob-slide" style="display:none;padding:20px 28px 8px;text-align:center">
+        <div style="font-size:64px;margin-bottom:16px">🛡️</div>
+        <div style="font-family:var(--font-display);font-size:22px;font-weight:800;color:var(--gray-900);line-height:1.2;margin-bottom:10px">Seguro sempre em dia</div>
+        <div style="font-size:15px;color:var(--gray-500);line-height:1.6">Receba avisos antes do vencimento, renove com um toque e abra sinistros direto pelo app. Sem burocracia.</div>
+      </div>
+      <!-- slide 5 -->
+      <div class="ob-slide" style="display:none;padding:20px 28px 8px;text-align:center">
+        <div style="font-size:64px;margin-bottom:16px">🛍️</div>
+        <div style="font-family:var(--font-display);font-size:22px;font-weight:800;color:var(--gray-900);line-height:1.2;margin-bottom:10px">Benefícios exclusivos</div>
+        <div style="font-size:15px;color:var(--gray-500);line-height:1.6">Descontos em acessórios, revisões e parceiros selecionados. Vantagens feitas para quem já é cliente.</div>
+      </div>
+    </div>
+
+    <!-- indicadores de ponto -->
+    <div style="display:flex;justify-content:center;gap:6px;margin:20px 0 24px" id="ob-dots">
+      <div class="ob-dot active" style="width:20px;height:6px;border-radius:3px;background:var(--red);transition:all .3s"></div>
+      <div class="ob-dot" style="width:6px;height:6px;border-radius:3px;background:var(--gray-200);transition:all .3s"></div>
+      <div class="ob-dot" style="width:6px;height:6px;border-radius:3px;background:var(--gray-200);transition:all .3s"></div>
+      <div class="ob-dot" style="width:6px;height:6px;border-radius:3px;background:var(--gray-200);transition:all .3s"></div>
+      <div class="ob-dot" style="width:6px;height:6px;border-radius:3px;background:var(--gray-200);transition:all .3s"></div>
+    </div>
+
+    <!-- botões navegação -->
+    <div style="display:flex;gap:10px;padding:0 28px">
+      <button id="ob-btn-pular" onclick="fecharOnboarding()" style="flex:1;background:var(--gray-100);border:none;border-radius:14px;padding:14px;font-family:var(--font-display);font-size:14px;font-weight:600;color:var(--gray-500);cursor:pointer">Pular</button>
+      <button id="ob-btn-prox" onclick="obProximo()" style="flex:2;background:var(--red);border:none;border-radius:14px;padding:14px;font-family:var(--font-display);font-size:14px;font-weight:700;color:white;cursor:pointer">Próximo →</button>
+    </div>
+  </div>
+</div>
 <div class="screen" id="s-fin">
   <div class="sb red"><span class="st">9:41</span><div class="si"><span>📶</span><span>🔋</span></div></div>
   <div class="scroll-area">
@@ -442,11 +506,29 @@ body{font-family:var(--font-body);background:#ECECEC;display:flex;justify-conten
       <div class="dc w" onclick="goTo('s-fin')"><div class="dc-ico">💳</div><div class="dc-lbl">Financiamento</div><div class="dc-val">12/48</div><div class="dc-sub">Vence em 3 dias</div></div>
       <div class="dc ok" onclick="goTo('s-seg')"><div class="dc-ico">🛡️</div><div class="dc-lbl">Seguro</div><div class="dc-val">Ativo</div><div class="dc-sub">Vence jan/2026</div></div>
       <div class="dc dg" onclick="goTo('s-ipva')"><div class="dc-ico">📋</div><div class="dc-lbl">IPVA 2025</div><div class="dc-val">Pendente</div><div class="dc-sub">R$ 3.240,00</div></div>
-      <div class="dc ok" onclick="goTo('s-rev')"><div class="dc-ico">🔧</div><div class="dc-lbl">Revisão</div><div class="dc-val">Em dia</div><div class="dc-sub">Próx. 45.000km</div></div>
+      <div class="dc dg" onclick="goTo('s-multas')" style="border:2px solid #FFBBBB;background:#FFF5F5;position:relative;overflow:visible">
+        <div style="position:absolute;top:-8px;right:-8px;background:var(--danger);color:white;border-radius:99px;padding:2px 8px;font-size:10px;font-weight:700;white-space:nowrap">1 multa</div>
+        <div class="dc-ico">🚨</div><div class="dc-lbl">Multas</div><div class="dc-val" style="color:var(--danger)">1 aberta</div><div class="dc-sub" style="color:var(--danger);font-weight:600">Desc. disponível</div>
+      </div>
+    </div>
+    <!-- alerta multa -->
+    <div style="margin:14px 24px 0">
+      <div onclick="goTo('s-multas')" style="background:linear-gradient(135deg,#7B1010,#CC0000);border-radius:16px;padding:14px 16px;display:flex;align-items:center;gap:12px;cursor:pointer;box-shadow:0 4px 20px rgba(204,0,0,.3)">
+        <div style="width:44px;height:44px;background:rgba(255,255,255,.15);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;position:relative">
+          🚨
+          <span style="position:absolute;top:-4px;right:-4px;width:10px;height:10px;border-radius:50%;background:white;animation:pulse-dot 1.2s infinite"></span>
+        </div>
+        <div style="flex:1">
+          <div style="font-family:var(--font-display);color:white;font-size:14px;font-weight:800">Multa com desconto disponível</div>
+          <div style="color:rgba(255,255,255,.75);font-size:12px;margin-top:2px">Pague até 06/04 e economize 20%</div>
+        </div>
+        <span style="color:rgba(255,255,255,.6);font-size:20px">›</span>
+      </div>
     </div>
     <!-- serviços -->
     <div style="padding:20px 24px 0"><div class="stitle">Serviços</div></div>
     <div style="padding:0 24px">
+      <div class="ai" onclick="goTo('s-multas')"><div class="aico" style="background:#FFF0F0">🚨</div><div style="flex:1"><div style="font-size:14px;font-weight:600;color:var(--danger)">Multas de trânsito ⚠️</div><div style="font-size:12px;color:var(--danger);margin-top:2px;opacity:.8">1 infração com desconto de 20%</div></div><span style="color:var(--danger);font-size:16px">›</span></div>
       <div class="ai" onclick="goTo('s-rev')"><div class="aico" style="background:#FFF0F0">🔧</div><div style="flex:1"><div style="font-size:14px;font-weight:600;color:var(--gray-900)">Agendar revisão</div><div style="font-size:12px;color:var(--gray-400);margin-top:2px">Próxima revisão em 45.000 km</div></div><span style="color:var(--gray-400);font-size:16px">›</span></div>
       <div class="ai" onclick="goTo('s-seg-oferta')"><div class="aico" style="background:#F0F4FF">🛡️</div><div style="flex:1"><div style="font-size:14px;font-weight:600;color:var(--gray-900)">Seguros</div><div style="font-size:12px;color:var(--gray-400);margin-top:2px">Planos e sua apólice ativa</div></div><span style="color:var(--gray-400);font-size:16px">›</span></div>
       <div class="ai" onclick="goTo('s-acess')"><div class="aico" style="background:#F3E5FF">🛍️</div><div style="flex:1"><div style="font-size:14px;font-weight:600;color:var(--gray-900)">Acessórios</div><div style="font-size:12px;color:var(--gray-400);margin-top:2px">Parceiros com desconto exclusivo</div></div><span style="color:var(--gray-400);font-size:16px">›</span></div>
@@ -888,6 +970,49 @@ function renovarSeguro(){
   showToast('✅ Renovação contratada! Nova vigência: jan/2026');
   setTimeout(()=>{ restaurarSeguro(); }, 1800);
 }
+// ONBOARDING
+let obSlide = 0;
+const obTotal = 5;
+function abrirOnboarding(){
+  obSlide = 0;
+  obRenderSlide();
+  const overlay = document.getElementById('onboarding-overlay');
+  const sheet   = document.getElementById('onboarding-sheet');
+  overlay.style.display = 'block';
+  sheet.style.display   = 'block';
+  requestAnimationFrame(()=>{ sheet.style.transform = 'translateY(0)'; });
+}
+function fecharOnboarding(){
+  const sheet = document.getElementById('onboarding-sheet');
+  sheet.style.transform = 'translateY(100%)';
+  setTimeout(()=>{
+    sheet.style.display = 'none';
+    document.getElementById('onboarding-overlay').style.display = 'none';
+  }, 350);
+}
+function obRenderSlide(){
+  document.querySelectorAll('.ob-slide').forEach((s,i)=>{ s.style.display = i===obSlide ? 'block' : 'none'; });
+  document.querySelectorAll('.ob-dot').forEach((d,i)=>{
+    d.style.width      = i===obSlide ? '20px' : '6px';
+    d.style.background = i===obSlide ? 'var(--red)' : 'var(--gray-200)';
+  });
+  const ultimo = obSlide === obTotal - 1;
+  document.getElementById('ob-btn-prox').textContent  = ultimo ? '✓ Começar' : 'Próximo →';
+  document.getElementById('ob-btn-pular').style.display = ultimo ? 'none' : 'flex';
+}
+function obProximo(){
+  if(obSlide < obTotal - 1){ obSlide++; obRenderSlide(); }
+  else { fecharOnboarding(); }
+}
+
+// MULTAS
+function pagarMultaPix(){
+  showToast('⚡ Pix copiado! Cole no seu banco para pagar R$ 234,78');
+}
+function pagarMultaBoleto(){
+  showToast('📄 Boleto gerado! Vencimento: 06/04/2025 · R$ 234,78');
+}
+
 // CUPOM
 function copyCupom(btn,code){
   navigator.clipboard?.writeText(code).catch(()=>{});
@@ -944,6 +1069,7 @@ function copyCupom(btn,code){
             <div style="height:140px;background:linear-gradient(135deg,#1B3A4B,#2E6B8A);display:flex;align-items:center;justify-content:center;position:relative">
               <span style="font-size:72px;filter:drop-shadow(0 8px 16px rgba(0,0,0,.3))">🚙</span>
               <div style="position:absolute;top:12px;left:12px;background:var(--red);color:white;border-radius:8px;padding:4px 10px;font-size:11px;font-weight:700">Recomendado</div>
+              <div style="position:absolute;top:12px;right:12px;background:linear-gradient(135deg,#1B5E20,#2E7D32);color:white;border-radius:8px;padding:4px 10px;font-size:11px;font-weight:700;display:flex;align-items:center;gap:4px"><span>🛡️</span>Garantia 12 meses</div>
               <div style="position:absolute;bottom:10px;right:10px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);border-radius:6px;padding:3px 8px;font-size:11px;color:white;font-weight:600">0 km</div>
             </div>
             <div style="padding:16px">
@@ -1078,6 +1204,109 @@ function copyCupom(btn,code){
   </div>
 </div>
 
+
+<!-- ===== MULTAS DE TRÂNSITO ===== -->
+<div class="screen" id="s-multas" style="display:none;flex-direction:column">
+  <div class="sb red"><span class="st">9:41</span><div class="si"><span>📶</span><span>🔋</span></div></div>
+  <div class="scroll-area">
+    <div style="background:linear-gradient(135deg,#7B1010,#CC0000);padding:16px 24px 28px;position:relative;overflow:hidden">
+      <div style="position:absolute;top:-40px;right:-40px;width:180px;height:180px;background:rgba(255,255,255,.05);border-radius:50%"></div>
+      <button class="hback" onclick="goTo('s-car')" style="margin-bottom:12px">‹</button>
+      <div style="font-family:var(--font-display);color:white;font-size:22px;font-weight:800;letter-spacing:-.5px">Multas de Trânsito</div>
+      <div style="color:rgba(255,255,255,.7);font-size:13px;margin-top:4px">Honda Civic EXL 2022 · ABC-1D23</div>
+      <div style="display:flex;gap:20px;margin-top:20px">
+        <div><div style="color:rgba(255,255,255,.6);font-size:11px">Em aberto</div><div style="font-family:var(--font-display);color:white;font-size:28px;font-weight:800;letter-spacing:-1px;margin-top:2px">1</div></div>
+        <div style="width:1px;background:rgba(255,255,255,.2)"></div>
+        <div><div style="color:rgba(255,255,255,.6);font-size:11px">Valor original</div><div style="font-family:var(--font-display);color:white;font-size:28px;font-weight:800;letter-spacing:-1px;margin-top:2px">R$ 293,47</div></div>
+        <div style="width:1px;background:rgba(255,255,255,.2)"></div>
+        <div><div style="color:rgba(255,255,255,.6);font-size:11px">Com desconto</div><div style="font-family:var(--font-display);color:#7CFF7C;font-size:28px;font-weight:800;letter-spacing:-1px;margin-top:2px">R$ 234,78</div></div>
+      </div>
+    </div>
+
+    <div style="padding:16px 24px 0">
+
+      <!-- banner desconto -->
+      <div style="background:linear-gradient(135deg,#E8F5E9,#C8EFD0);border-left:4px solid var(--success);border-radius:var(--radius-sm);padding:14px 16px;margin-bottom:20px;display:flex;gap:10px;align-items:flex-start">
+        <span style="font-size:22px">🏷️</span>
+        <div>
+          <div style="font-family:var(--font-display);font-size:14px;font-weight:800;color:#1B5E20">20% de desconto disponível</div>
+          <div style="font-size:12px;color:#2E7D32;margin-top:3px;line-height:1.5">Infração dentro do prazo de 30 dias. Pague até <strong>06/04/2025</strong> e economize R$ 58,69.</div>
+        </div>
+      </div>
+
+      <!-- MULTA ABERTA -->
+      <div class="stitle">Em aberto</div>
+      <div style="background:white;border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;margin-bottom:16px;border-left:4px solid var(--danger)">
+        <div style="padding:16px">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px">
+            <div style="flex:1">
+              <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
+                <div style="background:#FFF0F0;border-radius:6px;padding:3px 8px;font-size:11px;font-weight:700;color:var(--danger)">Média</div>
+                <div style="background:#FFF3CD;border-radius:6px;padding:3px 8px;font-size:11px;font-weight:700;color:#7D5A00">5 pontos</div>
+              </div>
+              <div style="font-family:var(--font-display);font-size:15px;font-weight:800;color:var(--gray-900)">Excesso de velocidade</div>
+              <div style="font-size:12px;color:var(--gray-500);margin-top:4px;line-height:1.5">Rodovia Castelo Branco, km 34 · Radar fixo<br>Velocidade: 82 km/h em via de 60 km/h</div>
+              <div style="font-size:11px;color:var(--gray-400);margin-top:6px">07/03/2025 · 14h23 · Auto nº 4B8291034</div>
+            </div>
+          </div>
+
+          <!-- valores -->
+          <div style="background:var(--gray-100);border-radius:10px;padding:12px;margin-top:14px">
+            <div style="display:flex;justify-content:space-between;margin-bottom:8px">
+              <div style="font-size:13px;color:var(--gray-600)">Valor original</div>
+              <div style="font-size:13px;font-weight:600;color:var(--gray-900);text-decoration:line-through">R$ 293,47</div>
+            </div>
+            <div style="display:flex;justify-content:space-between;margin-bottom:8px">
+              <div style="font-size:13px;color:var(--success);font-weight:600">Desconto 20% (até 06/04)</div>
+              <div style="font-size:13px;font-weight:700;color:var(--success)">- R$ 58,69</div>
+            </div>
+            <div style="height:1px;background:var(--gray-200);margin-bottom:8px"></div>
+            <div style="display:flex;justify-content:space-between">
+              <div style="font-family:var(--font-display);font-size:14px;font-weight:800;color:var(--gray-900)">Total com desconto</div>
+              <div style="font-family:var(--font-display);font-size:18px;font-weight:800;color:var(--danger)">R$ 234,78</div>
+            </div>
+          </div>
+
+          <!-- prazo -->
+          <div style="display:flex;align-items:center;gap:8px;margin-top:10px;padding:8px 10px;background:#FFF3CD;border-radius:8px">
+            <span style="font-size:16px">⏰</span>
+            <div style="font-size:12px;color:#7D5A00;font-weight:600">Desconto válido por mais <strong>30 dias</strong> — vence em 06/04/2025</div>
+          </div>
+
+          <!-- ações -->
+          <div style="display:flex;gap:8px;margin-top:14px">
+            <button class="bp" style="flex:1;font-size:13px" onclick="pagarMultaPix()">⚡ Pagar com Pix</button>
+            <button class="bs" style="flex:1;font-size:13px" onclick="pagarMultaBoleto()">📄 Boleto</button>
+          </div>
+          <button onclick="showToast('📋 Abrindo formulário de recurso...')" style="width:100%;margin-top:8px;background:transparent;border:1px solid var(--gray-300);border-radius:12px;padding:10px;font-size:12px;color:var(--gray-500);font-weight:600;cursor:pointer">Indicar condutor ou recorrer</button>
+        </div>
+      </div>
+
+      <!-- MULTA PAGA -->
+      <div class="stitle">Pagas</div>
+      <div style="background:white;border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;margin-bottom:32px;border-left:4px solid var(--success);opacity:.8">
+        <div style="padding:16px">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px">
+            <div style="flex:1">
+              <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
+                <div style="background:#E8F5E9;border-radius:6px;padding:3px 8px;font-size:11px;font-weight:700;color:var(--success)">✓ Paga</div>
+                <div style="background:var(--gray-100);border-radius:6px;padding:3px 8px;font-size:11px;font-weight:600;color:var(--gray-500)">Leve · 3 pontos</div>
+              </div>
+              <div style="font-family:var(--font-display);font-size:15px;font-weight:800;color:var(--gray-700)">Estacionamento irregular</div>
+              <div style="font-size:12px;color:var(--gray-400);margin-top:4px;line-height:1.5">Rua Augusta, 1240 · São Paulo<br>Vaga exclusiva para idosos</div>
+              <div style="font-size:11px;color:var(--gray-400);margin-top:6px">12/01/2025 · Auto nº 3A7184920</div>
+            </div>
+            <div style="text-align:right;flex-shrink:0">
+              <div style="font-family:var(--font-display);font-size:16px;font-weight:800;color:var(--gray-500)">R$ 195,23</div>
+              <div style="font-size:11px;color:var(--gray-400);margin-top:2px">pago em 20/01</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
 
 <!-- ===== IPVA ===== -->
 <div class="screen" id="s-ipva" style="display:none;flex-direction:column">
@@ -1597,7 +1826,7 @@ function car2SelSegTipo(btn, val){
         <div class="dc-ico">🛡️</div><div class="dc-lbl">Seguro</div><div class="dc-val">Inativo</div><div class="dc-sub" style="color:var(--danger);font-weight:600">Contratar agora</div>
       </div>
       <div class="dc ok"><div class="dc-ico">📋</div><div class="dc-lbl">IPVA 2025</div><div class="dc-val">Pago</div><div class="dc-sub">Em dia ✓</div></div>
-      <div class="dc ok"><div class="dc-ico">🔧</div><div class="dc-lbl">Revisão</div><div class="dc-val">Em dia</div><div class="dc-sub">Próx. 60.000km</div></div>
+      <div class="dc ok"><div class="dc-ico">🚨</div><div class="dc-lbl">Multas</div><div class="dc-val">Nenhuma</div><div class="dc-sub">Veículo limpo ✓</div></div>
     </div>
 
     <!-- CTA seguro repetido abaixo dos cards -->
